@@ -1,0 +1,25 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Log files
+*.log
+
+# Environment variables (if you use them)
+.env
+
+# Installer files
+*.exe
+
+# Compressed archives
+*.zip
+*.rar
+*.7z
+
+# Temporary files
+*.tmp
+*.cache
