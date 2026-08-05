@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1000" height="800" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg" style="background-color: white;">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000000" />
+    </marker>
+  </defs>
+
+  <!-- External Entity: User -->
+  <rect x="30" y="360" width="220" height="80" rx="5" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="140" y="405" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="#000000">User (Customer)</text>
+
+  <!-- External Entity: Admin -->
+  <rect x="750" y="360" width="220" height="80" rx="5" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="860" y="405" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="#000000">Admin</text>
+
+  <!-- External Entity: eSewa -->
+  <rect x="390" y="680" width="220" height="80" rx="5" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="500" y="725" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="#000000">eSewa Gateway</text>
+
+  <!-- Central Process: System -->
+  <circle cx="500" cy="400" r="120" fill="#ffffff" stroke="#000000" stroke-width="3" />
+  <text x="500" y="380" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="#000000">0.0</text>
+  <text x="500" y="405" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="#000000">Ayurvedic Health</text>
+  <text x="500" y="430" font-family="Arial" font-size="26" font-weight="bold" text-anchor="middle" fill="#000000">Portal System</text>
+
+  <!-- Data Flows: User to System -->
+  <path d="M 250 380 L 380 380" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <text x="315" y="375" font-family="Arial" font-size="20" text-anchor="middle" fill="#000000">Login/Registration</text>
+  
+  <path d="M 250 400 L 380 400" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <text x="315" y="396" font-family="Arial" font-size="20" text-anchor="middle" fill="#000000">Quiz Responses</text>
+
+  <path d="M 250 420 L 380 420" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <text x="315" y="416" font-family="Arial" font-size="20" text-anchor="middle" fill="#000000">Order Data</text>
+
+  <!-- Data Flows: System to User -->
+  <path d="M 380 440 Q 315 470 250 440" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <text x="315" y="480" font-family="Arial" font-size="20" text-anchor="middle" fill="#000000">Recommendations</text>
+
+  <!-- Data Flows: Admin to System -->
+  <path d="M 750 380 L 620 380" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <text x="685" y="375" font-family="Arial" font-size="20" text-anchor="middle" fill="#000000">Product Mgmt</text>
+
+  <!-- Data Flows: System to Admin -->
+  <path d="M 620 420 L 750 420" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <text x="685" y="440" font-family="Arial" font-size="20" text-anchor="middle" fill="#000000">Admin Reports</text>
+
+  <!-- Data Flows: System to eSewa -->
+  <path d="M 480 520 L 480 680" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <text x="470" y="600" font-family="Arial" font-size="20" text-anchor="end" fill="#000000">Payment Request</text>
+
+  <!-- Data Flows: eSewa to System -->
+  <path d="M 520 680 L 520 520" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)" />
+  <text x="530" y="600" font-family="Arial" font-size="20" text-anchor="start" fill="#000000">Verification</text>
+
+</svg>

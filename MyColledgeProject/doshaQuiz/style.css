@@ -1,0 +1,949 @@
+/* This is where we get the special writing style from the internet! */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+/* This is our magic color box where we keep all our favorite crayons! */
+:root {
+  --bg-color: #fcfcfc; /* This is the soft white paper color for our floor! */
+  --text-main: #2d3748; /* This is the dark crayon for our main words! */
+  --text-muted: #718096; /* This is a quiet gray crayon for tiny words! */
+  --primary-color: #2b6cb0; /* This is our favorite deep blue crayon! */
+  --primary-hover: #2c5282; /* This is the blue crayon when we press it hard! */
+  --accent-color: #d69e2e; /* This is a shiny gold crayon for sparkles! */
+  
+  --vata-color: #4299e1; /* The blue crayon for the Wind Team! */
+  --pitta-color: #f56565; /* The red crayon for the Fire Team! */
+  --kapha-color: #48bb78; /* The green crayon for the Plant Team! */
+  
+  --card-bg: #ffffff; /* This is the bright white paper for our question cards! */
+  --border-radius: 24px; /* This makes the corners of our cards soft and round! */
+  --transition-speed: 0.4s; /* This tells the magic how fast to change things! */
+  --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0,0,0,0.02); /* This adds a tiny shadow to make things float! */
+  --inner-shadow: inset 0 2px 4px rgba(0,0,0,0.02); /* This adds a tiny shadow inside our boxes! */
+}
+
+/* This is for EVERY single thing on the page! */
+* {
+  box-sizing: border-box; /* This makes sure all the toys fit in their boxes! */
+  margin: 0; /* No empty space around the toys! */
+  padding: 0; /* No empty space inside the toys! */
+}
+
+/* This is the big playground where we stay! */
+body {
+  font-family: 'Outfit', sans-serif; /* Use the pretty writing style we got! */
+  background-color: var(--bg-color); /* Use our soft white crayon for the floor! */
+  color: var(--text-main); /* Use our dark crayon for all the text! */
+  line-height: 1.6; /* Give our words some room to breathe! */
+  height: 100vh; /* Make the playground as tall as the whole screen! */
+  width: 100vw; /* Make the playground as wide as the whole screen! */
+  display: flex; /* Help the toys stand in a nice line! */
+  flex-direction: column; /* Stack the toys on top of each other! */
+  align-items: center; /* Put all the toys right in the middle! */
+  margin: 0; /* No gaps around the edges! */
+  padding: 0; /* No gaps inside the edges! */
+  overflow: hidden; /* Don't let anything poke out of the screen! */
+  -webkit-font-smoothing: antialiased; /* Make the letters look extra smooth! */
+}
+
+/* This adds some magic light circles in the background! */
+.bg-decoration {
+  position: fixed; /* Keep this background still like a painting on a wall! */
+  top: -50%; /* Move it way up! */
+  left: -50%; /* Move it way left! */
+  width: 200%; /* Make it double huge! */
+  height: 200%; /* Make it double tall! */
+  background: radial-gradient(circle at 50% 50%, rgba(214, 158, 46, 0.03) 0%, transparent 60%); /* Draw a soft golden glow! */
+  z-index: -1; /* Put it behind everything else! */
+  pointer-events: none; /* Don't let it block our fingers! */
+}
+
+/* This is the big house that holds our game! */
+#app {
+  width: 100%; /* Make the house as wide as the screen! */
+  max-width: 100%; /* Don't let it get too wide! */
+  height: 100vh; /* Make it as tall as the screen! */
+  margin: 0 auto; /* Put it in the middle! */
+  padding: 85px 0 0; /* Leave some room at the top for our hat (navbar)! */
+  display: flex; /* Line up the rooms inside! */
+  flex-direction: column; /* Stack the rooms on top of each other! */
+  position: relative; /* Let us put toys inside with special spots! */
+  overflow: hidden; /* Hide anything that tries to escape! */
+}
+
+/* This tells a toy to hide so we can't see it! */
+.hidden {
+  display: none !important;
+}
+
+/* Big letters and little letters! */
+h1, h2, h3, h4 {
+  font-weight: 700; /* Use the thickest crayon! */
+  line-height: 1.2; /* Don't leave too much space! */
+}
+
+/* This is for all the buttons we can press! */
+button {
+  cursor: pointer; /* Show a little hand when we hover! */
+  font-family: inherit; /* Use the same writing style! */
+  border: none; /* No ugly lines around our buttons! */
+  background: none; /* No messy background color! */
+  outline: none; /* No blue lines when we click! */
+  -webkit-tap-highlight-color: transparent; /* No ugly flash when we tap on a phone! */
+}
+
+/* ═════════ THE 'HELLO!' SCREEN ═════════ */
+/* This is the first thing we see when we open the game! */
+.welcome-screen {
+  text-align: center; /* Put all the words in the middle! */
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; /* Make it float up slowly! */
+  padding: 3rem 2rem; /* Give the words some room to play! */
+  background: var(--card-bg); /* Use the bright white paper! */
+  border-radius: var(--border-radius); /* Give it nice soft corners! */
+  box-shadow: var(--box-shadow); /* Make it float above the floor! */
+  border: 1px solid rgba(0,0,0,0.02); /* Add a tiny, tiny line around it! */
+  margin-top: 1rem; /* Push it down a little from the ceiling! */
+  position: relative; /* Let us put things inside it! */
+  overflow: hidden; /* Keep all the toys inside! */
+  max-height: 100%; /* Don't let it get taller than the house! */
+  display: flex; /* Help the toys stand in a line! */
+  flex-direction: column; /* Stack them up! */
+  justify-content: center; /* Put them in the middle vertically too! */
+}
+
+/* This adds a rainbow line at the very top of the hello screen! */
+.welcome-screen::before {
+  content: ''; /* Make an empty sticker! */
+  position: absolute; /* Put it in a special spot! */
+  top: 0; left: 0; right: 0; height: 6px; /* Put it at the top and 6 tall! */
+  background: linear-gradient(90deg, var(--vata-color), var(--pitta-color), var(--kapha-color)); /* Color it like a rainbow! */
+}
+
+/* This is the big magic flower on the hello screen! */
+.welcome-mandala {
+  width: 120px; /* Make the flower this wide! */
+  height: 120px; /* Make the flower this tall! */
+  margin: 0 auto 2rem; /* Center it and leave room below! */
+  animation: slowSpin 30s linear infinite; /* Make the flower spin slowly! */
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.05)); /* Give it a tiny shadow! */
+  flex-shrink: 0; /* Don't let it get squished! */
+}
+
+/* This tells the flower how to spin! */
+@keyframes slowSpin {
+  100% { transform: rotate(360deg); } /* Keep turning until it's a full circle! */
+}
+
+/* This is the little message above the title! */
+.welcome-tagline {
+  color: var(--accent-color); /* Use the shiny gold crayon! */
+  font-weight: 700; /* Extra thick letters! */
+  letter-spacing: 4px; /* Pull the letters way apart! */
+  text-transform: uppercase; /* Use big capital letters! */
+  font-size: 0.85rem; /* Make the letters small! */
+  margin-bottom: 1.5rem; /* Leave room below! */
+  opacity: 0.9; /* Make it a tiny bit see-through! */
+}
+
+/* This is the big title "Discover Your Dosha Type"! */
+.welcome-title {
+  font-size: 2.5rem; /* Make the letters extra huge! */
+  margin-bottom: 1rem; /* Leave room below! */
+  color: var(--text-main); /* Use the dark crayon! */
+  letter-spacing: -1px; /* Pull the letters closer together! */
+  font-weight: 800; /* Extra, extra thick letters! */
+}
+
+/* This is the story about the 15 questions! */
+.welcome-desc {
+  max-width: 600px; /* Don't let the lines get too long! */
+  margin: 0 auto 2rem; /* Center it and leave room below! */
+  color: var(--text-muted); /* Use the quiet gray crayon! */
+  font-size: 1.1rem; /* Make the letters just right! */
+  font-weight: 400; /* Use a normal crayon! */
+}
+
+/* This is where we show the three team badges! */
+.welcome-doshas {
+  display: flex; /* Line up the badges! */
+  justify-content: center; /* Put them in the middle! */
+  gap: 1.5rem; /* Leave a gap between them! */
+  margin-bottom: 2.5rem; /* Leave room below! */
+  flex-wrap: wrap;
+}
+
+.dosha-pill {
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+  transition: all var(--transition-speed);
+}
+.dosha-pill:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.dosha-pill.vata { color: var(--vata-color); border: 1px solid rgba(66, 153, 225, 0.2); }
+.dosha-pill.pitta { color: var(--pitta-color); border: 1px solid rgba(245, 101, 101, 0.2); }
+.dosha-pill.kapha { color: var(--kapha-color); border: 1px solid rgba(72, 187, 120, 0.2); }
+
+.btn-start, .btn-retake {
+  background: var(--primary-color);
+  color: white;
+  padding: 1.4rem 4rem;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: all var(--transition-speed);
+  box-shadow: 0 10px 25px rgba(43, 108, 176, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-start:hover, .btn-retake:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(43, 108, 176, 0.4);
+  background: var(--primary-hover);
+}
+
+.quiz-info {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ═════════ QUIZ WRAPPER ═════════ */
+#quiz-wrapper {
+  width: 100%;
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Fill #app */
+  overflow: hidden;
+}
+
+/* HEADER & PROGRESS */
+.quiz-header {
+  margin-bottom: 2rem;
+  padding: 1.5rem 2rem;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border: 1px solid rgba(0,0,0,0.02);
+  position: relative;
+  z-index: 10;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.brand-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  box-shadow: 0 0 12px rgba(214, 158, 46, 0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(214, 158, 46, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(214, 158, 46, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(214, 158, 46, 0); }
+}
+
+.brand-name {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+}
+
+.question-counter {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  background: rgba(0,0,0,0.03);
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+}
+
+/* Common Header support for dosha-quiz.php */
+.quiz-info-top {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem; /* Compressed */
+}
+
+.quiz-progress-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 1rem auto 0.5rem;
+  padding: 0 1.5rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 10px; /* Thicker modern bar */
+  background: rgba(0,0,0,0.06);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #63b3ed, var(--primary-color));
+  border-radius: 20px;
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 10px rgba(66, 153, 225, 0.3);
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* SLIDES */
+.slide-container {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+  margin: 0 auto 1rem;
+  width: 100%;
+  max-width: 1200px;
+  border: 1px solid rgba(0,0,0,0.02);
+  height: 480px !important; /* Shrunken for requested "little small" look and locked for stability */
+  position: relative;
+  overflow: hidden;
+}
+
+/* This is one single question paper! */
+.question-slide {
+  position: absolute; /* Put it in its own special spot! */
+  top: 0;
+  left: 0;
+  width: 100%; /* Make it as wide as the box! */
+  height: 100%; /* Make it as tall as the box! */
+  padding: 1.5rem; /* Leave some room inside! */
+  opacity: 0; /* Make it invisible for now! */
+  pointer-events: none; /* Don't let fingers touch it when it's hidden! */
+  display: flex; /* Line up the toys inside! */
+  flex-direction: column; /* Stack them up! */
+  justify-content: center; /* Put them in the middle! */
+  transform: translateX(50px); /* Push it to the right a little bit! */
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); /* Make it slide in smoothly! */
+}
+
+/* This is the question paper you are looking at right now! */
+.question-slide.active {
+  opacity: 1; /* Make it visible! */
+  pointer-events: auto; /* Let fingers touch the stickers! */
+  transform: translateX(0); /* Put it right in the middle! */
+  position: relative; /* Let it stay there! */
+}
+
+/* This is the paper that is leaving to the left! */
+.question-slide.slide-out-left {
+  transform: translateX(-50px); /* Move it left! */
+  opacity: 0; /* Make it disappear! */
+}
+
+/* This is the paper that is leaving to the right! */
+.question-slide.slide-out-right {
+  transform: translateX(50px); /* Move it right! */
+  opacity: 0; /* Make it disappear! */
+}
+
+/* This is the big question words! */
+.question-title {
+  font-size: 1.6rem; /* Make the letters big! */
+  margin-bottom: 1.5rem; /* Leave room below! */
+  color: var(--text-main); /* Use the dark crayon! */
+  font-weight: 700; /* Extra thick letters! */
+  line-height: 1.35; /* Give the lines space! */
+}
+
+/* This is the floor where 3 answer stickers are kept! */
+.answers-grid {
+  display: grid; /* Make a clean grid for the stickers! */
+  grid-template-columns: repeat(3, 1fr); /* Put 3 stickers in a row! */
+  gap: 1rem; /* Leave a gap between them! */
+}
+
+/* This is one single answer sticker! */
+.answer-card {
+  position: relative; /* Let us put things inside it! */
+  display: flex; /* Line up the icon and words! */
+  flex-direction: column; /* Stack them up! */
+  padding: 0; /* No empty space inside yet! */
+  border: 2px solid rgba(0,0,0,0.06); /* Add a soft line around the sticker! */
+  border-radius: 20px; /* Make the corners soft! */
+  background: #fff; /* Use white paper! */
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); /* Make it change smoothly when we touch it! */
+  text-align: center; /* Center the words! */
+  cursor: pointer; /* Show the little hand! */
+  overflow: hidden; /* Keep the magic inside! */
+  height: 180px !important; /* Make every sticker exactly this tall! */
+}
+
+/* When our finger touches the sticker! */
+.answer-card:hover {
+  background: #fafbff; /* Make it a tiny bit blue! */
+  border-color: rgba(43, 108, 176, 0.3); /* Make the line blue! */
+  transform: translateY(-3px); /* Lift it up a tiny bit! */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.04); /* Give it a soft shadow! */
+}
+
+/* If you pick the Blue Wind sticker! */
+.answer-card.selected-vata {
+  border-color: var(--vata-color); /* Blue line! */
+  background: rgba(66, 153, 225, 0.04); /* Light blue paper! */
+  box-shadow: 0 0 0 2px var(--vata-color); /* Thick blue glow! */
+}
+/* If you pick the Red Fire sticker! */
+.answer-card.selected-pitta {
+  border-color: var(--pitta-color); /* Red line! */
+  background: rgba(245, 101, 101, 0.04); /* Light red paper! */
+  box-shadow: 0 0 0 2px var(--pitta-color); /* Thick red glow! */
+}
+/* If you pick the Green Plant sticker! */
+.answer-card.selected-kapha {
+  border-color: var(--kapha-color); /* Green line! */
+  background: rgba(72, 187, 120, 0.04); /* Light green paper! */
+  box-shadow: 0 0 0 2px var(--kapha-color); /* Thick green glow! */
+}
+
+/* This is the little check mark that shows when you pick a sticker! */
+.card-check {
+  position: absolute; /* Put it in the corner! */
+  top: 1rem;
+  right: 1rem;
+  width: 24px; /* 24 wide! */
+  height: 24px; /* 24 tall! */
+  background: var(--text-muted); /* Gray circle! */
+  border-radius: 50%; /* Perfect circle! */
+  display: flex; /* Line up the check! */
+  align-items: center; /* Middle! */
+  justify-content: center; /* Middle! */
+  opacity: 0; /* Hide it until we pick! */
+  transform: scale(0.5); /* Make it small! */
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); /* Make it grow smoothly! */
+}
+
+/* When a sticker is picked, show the check mark! */
+.answer-card[class*="selected-"] .card-check {
+  opacity: 1; /* Make it visible! */
+  transform: scale(1);
+}
+.answer-card.selected-vata .card-check { background: var(--vata-color); }
+.answer-card.selected-pitta .card-check { background: var(--pitta-color); }
+.answer-card.selected-kapha .card-check { background: var(--kapha-color); }
+
+.card-icon {
+  width: 100%;
+  height: 100px !important; /* Shrunken icon area */
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.card-icon svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Fill the full width of the box */
+}
+
+/* Container for the text content underneath the SVG */
+.card-content {
+  padding: 1rem; /* Compress padding */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+}
+
+.card-label {
+  font-size: 1.05rem; /* Reduced to save vertical space */
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+/* This is the words on the sticker choice! */
+.card-text {
+  font-size: 0.85rem; /* Make them small! */
+  color: var(--text-muted); /* Gray words! */
+  line-height: 1.3; /* Just enough room! */
+}
+
+/* ═════════ THE BALLOON SHOP (LIVE METER) ═════════ */
+/* This is the box at the bottom that shows your score! */
+.dosha-meter {
+  background: #ffffff; /* White paper background! */
+  border-top: 1px solid rgba(0,0,0,0.08); /* A line at the top to separate it! */
+  padding: 0.75rem 2rem; /* Give the balloons some room! */
+  box-shadow: 0 -8px 25px rgba(0,0,0,0.04); /* A shadow to make it float up! */
+  margin-top: auto; /* Push it to the very bottom! */
+  width: 100%; /* As wide as the house! */
+  display: flex; /* Line everything up in a row! */
+  align-items: center; /* Center them vertically! */
+  justify-content: center; /* Center them horizontally! */
+  gap: 1.5rem; /* Leave a gap between things! */
+  z-index: 50; /* Stay on top of the playground! */
+}
+
+/* This is the title of our balloon shop! */
+.meter-title {
+  font-size: 0.9rem; /* Just right! */
+  font-weight: 700; /* Thick letters! */
+  color: var(--text-muted); /* Quiet gray! */
+  text-transform: uppercase; /* Big letters! */
+  letter-spacing: 2px; /* Space them out! */
+  flex: 0 0 100px; /* Don't let it grow or shrink! */
+}
+
+/* This is the box that holds our three balloons! */
+.dosha-bars-wrapper {
+  display: flex; /* Line up the 3 balloon rows! */
+  flex: 1; /* Let it take up the rest of the space! */
+  gap: 2rem; /* Leave room between the balloons! */
+}
+
+/* This is one single balloon row! */
+.meter-row, .meter-col {
+  display: flex; /* Help the balloon and label stand together! */
+  flex-direction: column; /* Stack the words on top of the balloon! */
+  flex: 1; /* Let them all have the same space! */
+  gap: 0.5rem; /* A tiny gap! */
+}
+
+/* This is the label and the score number! */
+.meter-header {
+  display: flex; /* Line them up! */
+  justify-content: space-between; /* Put words on left, number on right! */
+  align-items: center; /* Center them! */
+}
+
+/* This is the name of the team! */
+.meter-label {
+  font-weight: 700; /* Thick! */
+  font-size: 1.05rem; /* Big enough to see! */
+  display: flex; /* Line them up! */
+  justify-content: space-between; /* Space out! */
+  width: 100%; /* Take all the space! */
+}
+
+/* This is the track where the balloon grows! */
+.meter-track {
+  width: 100%; /* As wide as the row! */
+  height: 10px; /* 10 tall! */
+  background: rgba(0,0,0,0.04); /* Light gray path! */
+  border-radius: 10px; /* Round ends! */
+  overflow: hidden; /* Hide the balloon if it tries to pop out! */
+  box-shadow: var(--inner-shadow); /* A tiny shadow inside! */
+}
+
+/* This is the actual colored balloon that grows! */
+.meter-bar {
+  height: 100%; /* Fill the track! */
+  border-radius: 10px; /* Round ends! */
+  transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bounce a little when it fills! */
+}
+
+/* This is the number score (like 50%)! */
+.meter-pct {
+  font-weight: 800; /* Extra thick! */
+  font-size: 1.05rem; /* Big! */
+}
+
+/* Color the Wind Team balloon blue! */
+.meter-vata .meter-label, .meter-vata .meter-pct { color: var(--vata-color); }
+.meter-vata .meter-bar { background: linear-gradient(90deg, #90cdf4, var(--vata-color)); }
+
+/* Color the Fire Team balloon red! */
+.meter-pitta .meter-label, .meter-pitta .meter-pct { color: var(--pitta-color); }
+.meter-pitta .meter-bar { background: linear-gradient(90deg, #feb2b2, var(--pitta-color)); }
+
+/* Color the Plant Team balloon green! */
+.meter-kapha .meter-label, .meter-kapha .meter-pct { color: var(--kapha-color); }
+.meter-kapha .meter-bar { background: linear-gradient(90deg, #9ae6b4, var(--kapha-color)); }
+
+/* ═════════ THE REMOTE CONTROL (NAVIGATION) ═════════ */
+/* This is the bar at the bottom where buttons used to live! */
+.nav-bar {
+  display: flex; /* Line up the buttons! */
+  justify-content: center; /* Put everything in the middle! */
+  align-items: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  transition: all var(--transition-speed);
+}
+
+.btn-next {
+  display: none !important; /* Force hide the next button entirely for auto-advance behavior */
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 10px 25px rgba(43, 108, 176, 0.25);
+}
+.btn-next:hover:not(:disabled) {
+  transform: translateX(4px);
+  box-shadow: 0 12px 30px rgba(43, 108, 176, 0.35);
+  background: var(--primary-hover);
+}
+.btn-next:disabled {
+  background: rgba(0,0,0,0.04);
+  color: #a0aec0;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ═════════ RESULTS SCREEN ═════════ */
+.results-screen {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  padding-bottom: 5rem;
+  width: 100%;
+}
+
+.results-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.results-tag {
+  color: var(--accent-color);
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
+}
+
+.results-title {
+  font-size: 3.2rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+}
+
+.results-subtitle {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+}
+
+/* This is the big trophy card for the winning team! */
+.dominant-card {
+  position: relative; /* Let us put things in their spots! */
+  background: var(--card-bg); /* White paper! */
+  border-radius: var(--border-radius); /* Soft corners! */
+  padding: 4rem 2rem; /* Lots of room for the medal! */
+  text-align: center; /* Put everything in the middle! */
+  box-shadow: var(--box-shadow); /* Make it float high! */
+  margin-bottom: 1.5rem; /* Leave room below! */
+  animation: float 4s ease-in-out infinite; /* Make the medal bounce softly! */
+  overflow: hidden; /* Keep the magic inside! */
+  border: 1px solid rgba(0,0,0,0.01); /* Tiny, tiny line! */
+}
+
+/* This is the big sticker on the trophy! */
+.dominant-emoji {
+  font-size: 5rem; /* Giant sticker! */
+  display: block; /* Make it its own line! */
+  margin-bottom: 1.5rem; /* Room below! */
+}
+
+/* This tells the trophy to float up and down! */
+@keyframes float {
+  0%, 100% { transform: translateY(0); } /* Start on the floor! */
+  50% { transform: translateY(-15px); } /* Float up 15 bits! */
+}
+
+/* This is the fancy ancient word on the trophy! */
+.dominant-sanskrit {
+  color: rgba(0,0,0,0.02); /* Make it very, very light and ghostly! */
+  font-size: 14rem; /* Make it giant! */
+  font-weight: 800; /* Extra thick! */
+  position: absolute; /* Put it behind the other words! */
+  top: -4rem;
+  right: -2rem;
+  line-height: 1; /* Squish it! */
+  pointer-events: none; /* Don't let fingers touch it! */
+  font-family: serif; /* Use a different fancy writing style! */
+}
+
+/* This is your Dosha name (like Vata)! */
+.dominant-name {
+  font-size: 3.8rem; /* Giant letters! */
+  color: var(--text-main); /* Dark crayon! */
+  margin-bottom: 0.5rem; /* Tiny room below! */
+  letter-spacing: -1px; /* Squeeze the letters! */
+}
+
+/* This is your magic element (like Air)! */
+.dominant-element {
+  font-weight: 600; /* Thick letters! */
+  color: var(--accent-color); /* Shiny gold crayon! */
+  margin-bottom: 2.5rem; /* Leave room! */
+  font-size: 1.3rem; /* Big enough! */
+  letter-spacing: 1px; /* Space them out! */
+}
+
+/* This is the story about YOU! */
+.dominant-desc {
+  max-width: 700px; /* Don't let lines get too long! */
+  margin: 0 auto 2.5rem; /* Center and leave room below! */
+  font-size: 1.2rem; /* Easy to read! */
+  line-height: 1.7; /* Lots of space! */
+  color: var(--text-muted); /* Quiet gray crayon! */
+}
+
+/* This is where your badges go! */
+.dominant-traits {
+  display: flex; /* Line up the badges! */
+  justify-content: center; /* In the middle! */
+  gap: 1.2rem; /* Gaps between! */
+  flex-wrap: wrap; /* If we have many, put them on a new line! */
+}
+
+/* This is a single badge you earned! */
+.dominant-traits span {
+  background: #f7fafc; /* Light gray-blue paper! */
+  color: #4a5568; /* Darker gray words! */
+  padding: 0.6rem 1.4rem; /* Give it room! */
+  border-radius: 50px; /* Round like a pill! */
+  font-size: 1rem; /* Good size! */
+  font-weight: 700; /* Extra thick! */
+  border: 1px solid rgba(0,0,0,0.03); /* Tiny line! */
+}
+
+/* This is the scoreboard at the end of the game! */
+.results-breakdown {
+  background: var(--card-bg); /* White paper! */
+  border-radius: var(--border-radius); /* Soft corners! */
+  padding: 3.5rem; /* Lots of room! */
+  box-shadow: var(--box-shadow); /* Make it float! */
+  margin-bottom: 3rem; /* Room below! */
+  border: 1px solid rgba(0,0,0,0.01); /* Tiny, tiny line! */
+}
+
+/* The scoreboard title! */
+.breakdown-title {
+  font-size: 1.5rem; /* Nice and big! */
+  font-weight: 700; /* Thick! */
+  margin-bottom: 2.5rem; /* Room below! */
+  color: var(--text-main); /* Dark crayon! */
+  text-align: center; /* Middle! */
+}
+
+/* This is one row on the final scoreboard! */
+.breakdown-bar-row {
+  display: flex; /* Line thing up! */
+  align-items: center; /* Middle! */
+  gap: 2rem; /* Gap between! */
+  margin-bottom: 2rem; /* Room below! */
+}
+.breakdown-bar-row:last-child { margin-bottom: 0; } /* No room below the last one! */
+
+/* The name of the team! */
+.breakdown-dosha {
+  flex: 0 0 110px; /* Stay this wide! */
+  font-weight: 700; /* Thick! */
+  font-size: 1.15rem; /* Good size! */
+}
+
+/* The track for the final score filling! */
+.breakdown-track {
+  flex: 1; /* Be as wide as possible! */
+  height: 16px; /* 16 tall! */
+  background: rgba(0,0,0,0.03); /* Very light gray path! */
+  border-radius: 20px; /* Round ends! */
+  overflow: hidden; /* Hide anything outside! */
+  box-shadow: var(--inner-shadow); /* Tiny shadow inside! */
+}
+
+/* The color that fills the score bar! */
+.breakdown-fill {
+  height: 100%; /* Fill the whole track! */
+  border-radius: 20px; /* Round ends! */
+  transition: width 1.8s cubic-bezier(0.16, 1, 0.3, 1); /* Fill up very slowly and smoothly! */
+  position: relative; /* Let us put sparkles inside! */
+}
+
+/* This adds a moving glitter effect to the score bars! */
+.breakdown-fill::after {
+  content: ''; /* Empty sticker! */
+  position: absolute; /* In its own spot! */
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%); /* A white glitter gradient! */
+  animation: shimmer 2s infinite; /* Make it slide like a movie! */
+}
+
+/* This is the final score number! */
+.breakdown-pct {
+  flex: 0 0 55px; /* Stay this wide! */
+  text-align: right; /* Words on the right! */
+  font-weight: 800; /* Extra thick! */
+  font-size: 1.2rem; /* Big letters! */
+}
+
+/* This is the corner where we give smart advice! */
+.results-advice {
+  background: var(--card-bg); /* White paper! */
+  border-radius: var(--border-radius); /* Soft corners! */
+  padding: 3.5rem; /* Lots of room! */
+  box-shadow: var(--box-shadow); /* Float! */
+  margin-bottom: 4rem; /* Room below! */
+  border: 1px solid rgba(0,0,0,0.01); /* Tiny line! */
+  display: grid; /* Clean grid for boxes! */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Fill as many as fit! */
+  gap: 3rem; /* Room between! */
+}
+
+/* One single advice box! */
+.advice-section {
+  background: #f8fafc; /* Very light gray-blue paper! */
+  padding: 2rem; /* Room inside! */
+  border-radius: 20px; /* Soft corners! */
+  border: 1px solid rgba(0,0,0,0.02); /* Tiny line! */
+  transition: transform var(--transition-speed); /* Change smoothly! */
+}
+
+/* When our finger touches the advice box! */
+.advice-section:hover {
+  transform: translateY(-5px); /* Lift it up! */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.03); /* Give it a shadow! */
+}
+
+/* The "Diet" "Lifestyle" titles! */
+.advice-label {
+  font-weight: 800; /* Extra thick! */
+  font-size: 1.25rem; /* Big letters! */
+  margin-bottom: 1.2rem; /* Room below! */
+  color: var(--text-main); /* Dark crayon! */
+  display: flex; /* Line up the icon! */
+  align-items: center; /* Middle! */
+  gap: 0.6rem; /* Tiny gap! */
+}
+
+/* The actual advice story! */
+.advice-text {
+  color: var(--text-muted); /* Quiet gray crayon! */
+  font-size: 1.05rem; /* Good size! */
+  line-height: 1.7; /* Room between lines! */
+}
+
+/* The white button to play again! */
+.btn-retake {
+  display: flex; /* Help words and icons stand! */
+  margin: 0 auto; /* Put it in the middle! */
+  padding: 1.4rem 4rem; /* Big button! */
+  font-size: 1.2rem; /* Big words! */
+  background: #fff; /* White paper! */
+  color: var(--primary-color); /* Blue words! */
+  border: 2px solid rgba(43, 108, 176, 0.2); /* Soft blue line around it! */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.03); /* Float a little! */
+}
+
+/* When we touch the play again button! */
+.btn-retake:hover {
+  background: #f8fafc; /* Change color! */
+  color: var(--primary-color); /* Stay blue! */
+  transform: translateY(-4px); /* Lift it up more! */
+  border-color: var(--primary-color); /* Thicker blue line! */
+  box-shadow: 0 15px 35px rgba(43, 108, 176, 0.15); /* Bigger shadow! */
+}
+
+/* ═════════ THE MAGIC MOVES (ANIMATIONS) ═════════ */
+/* This tells things how to float up from the floor! */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); } /* Hidden and small! */
+  to { opacity: 1; transform: translateY(0) scale(1); } /* Visible and normal! */
+}
+
+/* This adds the 'Fade Up' magic to a toy! */
+.fade-up {
+  opacity: 0; /* Hidden first! */
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; /* Do the magic move! */
+}
+
+/* These tell the toys to wait their turn to float up! */
+.fade-up:nth-child(1) { animation-delay: 0.1s; }
+.fade-up:nth-child(2) { animation-delay: 0.2s; }
+.fade-up:nth-child(3) { animation-delay: 0.3s; }
+.fade-up:nth-child(4) { animation-delay: 0.4s; }
+.fade-up:nth-child(5) { animation-delay: 0.5s; }
+
+/* ═════════ PHONE AND TABLET ADJUSTMENTS ═════════ */
+/* If the screen is a little smaller (like a tablet)! */
+@media (max-width: 768px) {
+  .welcome-title { font-size: 2.8rem; }
+  .dominant-name { font-size: 2.8rem; }
+  .slide-container { padding: 2.5rem 2rem; min-height: 400px; }
+  .dominant-card, .results-breakdown, .results-advice { padding: 2.5rem; }
+  .results-advice { grid-template-columns: 1fr; gap: 2rem; }
+  .question-title { font-size: 1.6rem; }
+  
+  /* Make the scoreboard stack in a line! */
+  .dosha-meter { 
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+  .dosha-bars-wrapper {
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+  }
+  .meter-title { margin-bottom: 1rem; }
+}
+
+/* If the screen is very small (like a phone)! */
+@media (max-width: 480px) {
+  #app { padding: 0 1.2rem 2rem; }
+  .welcome-screen { padding: 4rem 1.5rem; }
+  .btn-start, .btn-retake { width: 100%; justify-content: center; } /* Make buttons as wide as the phone! */
+  .nav-bar { flex-direction: column-reverse; gap: 1rem; } /* Put buttons on top of each other! */
+  .nav-bar .btn { width: 100%; justify-content: center; }
+  .breakdown-dosha { flex: 0 0 90px; font-size: 1rem; }
+  .answers-grid {
+    grid-template-columns: 1fr; /* Put stickers on top of each other! */
+  }
+}
+

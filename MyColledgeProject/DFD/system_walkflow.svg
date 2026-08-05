@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1000" height="1500" viewBox="0 0 1000 1500" xmlns="http://www.w3.org/2000/svg" style="background-color: white;">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="black" />
+    </marker>
+    <style>
+      .node { fill: white; stroke: black; stroke-width: 2.5; }
+      .text { font-family: Arial; font-size: 22px; font-weight: bold; text-anchor: middle; }
+      .small-text { font-family: Arial; font-size: 18px; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- START -->
+  <rect x="400" y="40" width="200" height="60" rx="30" class="node" />
+  <text x="500" y="78" class="text">START</text>
+
+  <path d="M 500 100 L 500 160" fill="none" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- HOME PAGE -->
+  <rect x="350" y="160" width="300" height="70" class="node" />
+  <text x="500" y="202" class="text">Home Page / Login</text>
+
+  <path d="M 500 230 L 500 290" fill="none" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- DECISION: TAKE QUIZ? -->
+  <path d="M 500 290 L 650 350 L 500 410 L 350 350 Z" class="node" />
+  <text x="500" y="358" class="text">Take Quiz?</text>
+  <text x="530" y="280" class="small-text">Yes</text>
+  <text x="320" y="358" class="small-text">No</text>
+
+  <!-- QUIZ PROCESS -->
+  <path d="M 650 350 L 750 350 L 750 450 L 650 450" fill="none" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="700" y="450" width="250" height="70" class="node" />
+  <text x="825" y="492" class="text">Dosha Assessment</text>
+
+  <path d="M 825 520 L 825 580" fill="none" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- RESULTS -->
+  <polygon points="700,580 950,580 920,650 670,650" class="node" />
+  <text x="810" y="625" class="text">Show Recos</text>
+
+  <!-- Connect Recos to Browse -->
+  <path d="M 810 650 L 810 750 L 650 750" fill="none" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- BROWSE PRODUCTS -->
+  <path d="M 350 350 L 250 350 L 250 750 L 350 750" fill="none" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="350" y="715" width="300" height="70" class="node" />
+  <text x="500" y="758" class="text">Browse Catalog</text>
+
+  <path d="M 500 785 L 500 845" fill="none" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- DECISION: ADD TO CART? -->
+  <path d="M 500 845 L 650 905 L 500 965 L 350 905 Z" class="node" />
+  <text x="500" y="912" class="text">Buy Item?</text>
+  <text x="530" y="835" class="small-text">Yes</text>
+  <text x="320" y="912" class="small-text">No</text>
+
+  <!-- NO LOOP BACK TO HOME -->
+  <path d="M 350 905 L 100 905 L 100 200 L 350 200" fill="none" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- CHECKOUT -->
+  <rect x="350" y="1030" width="300" height="70" class="node" />
+  <text x="500" y="1072" class="text">Checkout &amp; Add Details</text>
+  <path d="M 500 965 L 500 1030" fill="none" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+  <path d="M 500 1100 L 500 1160" fill="none" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- PAYMENT eSEWA -->
+  <rect x="350" y="1160" width="300" height="70" class="node" />
+  <text x="500" y="1202" class="text">Payment (eSewa)</text>
+
+  <path d="M 500 1230 L 500 1290" fill="none" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- ORDER SUCCESS -->
+  <polygon points="350,1290 650,1290 620,1360 320,1360" class="node" />
+  <text x="485" y="1335" class="text">Order Confirmed</text>
+
+  <path d="M 485 1360 L 485 1420" fill="none" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- END -->
+  <rect x="385" y="1420" width="200" height="60" rx="30" class="node" />
+  <text x="485" y="1458" class="text">END / LOGOUT</text>
+
+</svg>

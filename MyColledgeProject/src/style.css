@@ -1,0 +1,1647 @@
+/* This is our magic color box! We keep all our favorite crayons here so we can use them later! */
+:root {
+    --bg-primary: linear-gradient(135deg, #a8e6cf, #dcedc1); /* This is the pretty paint for our background! */
+    --bg-secondary: #ffffff; /* This is the clean white paper color! */
+    --text-primary: #1b4332; /* This is the dark green crayon for our main words! */
+    --text-secondary: #2d6a4f; /* This is another green crayon for special words! */
+    --navbar-bg: rgba(255, 255, 255, 0.85); /* This is like a see-through window for our top bar! */
+    --card-bg: #ffffff; /* This is the color for our toy boxes! */
+    --footer-bg: #1b4332; /* This is the dark color for the bottom of our house! */
+    --input-bg: rgba(255, 255, 255, 0.5); /* This is the color for where we type our name! */
+    --shadow: rgba(0, 0, 0, 0.1); /* This is like a tiny shadow under our toys! */
+
+    /* These are the crayons we use for the Dosha Game! */
+    --glass-bg: var(--card-bg); /* This is the see-through box for our game! */
+    --glass-border: rgba(255, 255, 255, 0.2); /* This is a tiny shiny line around our box! */
+    --glass-shadow: var(--shadow); /* This is the shadow for our game box! */
+    --primary-color: var(--text-secondary); /* This is our favorite team color! */
+    --text-color: var(--text-primary); /* This is the color for our game stories! */
+    --btn-bg: var(--input-bg); /* This is the color for our game buttons! */
+    --btn-hover: var(--navbar-bg); /* This is what happens when we touch the buttons! */
+    --correct-color: #2a9d8f; /* This is the happy green for right answers! */
+    --wrong-color: #e63946; /* This is the red color for "Uh oh!" */
+
+    /* These are the shiny colors for our special plans! */
+    --sub-card-bg: rgba(255, 255, 255, 0.1); /* A shiny box for our plans! */
+    --sub-card-border: rgba(255, 255, 255, 0.2); /* A shiny line for our plans! */
+    --primary-gradient: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%); /* A green rainbow! */
+    --gold-gradient: linear-gradient(135deg, #ffd700 0%, #f39c12 100%); /* A gold rainbow for winners! */
+    --text-dark: #1b4332; /* Dark crayon! */
+    --text-light: #f8faf9; /* Light crayon! */
+}
+
+
+
+/* Basic Rest */
+/* This is the big giant playground where everything happens! */
+body {
+    margin: 0; /* No empty spaces around the playground! */
+    padding: 0; /* No extra room inside the playground! */
+    font-family: Arial, sans-serif; /* This is the style of our handwriting! */
+    background: var(--bg-primary); /* Use our pretty paint for the floor! */
+    background-attachment: fixed; /* Keep the paint from moving when we scroll! */
+    color: var(--text-primary); /* Use our dark green crayon for writing! */
+    padding-top: 85px; /* Leave some space at the top for our hat! */
+    /* This makes sure our playground is at least as tall as our screen! */
+    min-height: 100vh;
+}
+
+/* Header Styling (Premium Navbar) */
+/* This is the magic hat at the top of our page! It stays there even when we walk down! */
+.header {
+    display: flex; /* Put everything in a nice straight line! */
+    justify-content: space-between; /* Put the logo on one side and buttons on the other! */
+    align-items: center; /* Make everything stay perfectly in the middle! */
+    padding: 10px 60px; /* Give some room for our logo and buttons to breathe! */
+    background: var(--navbar-bg); /* Use our see-through window color! */
+    /* This makes the hat look like a shiny piece of glass! */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 4px 30px var(--shadow); /* Give the hat a tiny shadow so it looks like it's floating! */
+    position: fixed; /* Stick the hat to the top of the screen! */
+    top: 0;
+    left: 0;
+    width: 100%; /* Make the hat spread all the way across! */
+    z-index: 1000; /* Put the hat on top of everything else! */
+    box-sizing: border-box; /* Make sure the hat fits perfectly! */
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Make the hat slide smoothly! */
+}
+
+.header-hidden {
+    transform: translateY(-100%);
+}
+
+/* This is the badge (Logo) for our clubhouse! */
+.logo {
+    background: none !important;
+    padding: 0 !important;
+    border: none !important;
+    margin-left: -60px; /* Moving the logo a little left */
+    margin-top: -10px; /* Nudge the logo up */
+}
+
+/* This is the picture inside our badge! */
+.logo img {
+    height: 48px;
+    width: auto;
+    display: block;
+    background: transparent !important;
+    transition: transform 0.3s ease;
+    mix-blend-mode: multiply;
+    /* Fix for white background logos */
+}
+
+/* When we touch our badge, it wiggles and grows a little! */
+.logo img:hover {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-primary);
+}
+
+.logo-link dotlottie-wc {
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover dotlottie-wc {
+    transform: scale(1.05);
+}
+
+.logo-title {
+    margin-top: 0.2rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.logo-subtitle {
+    margin-top: 0.1rem;
+    font-size: 0.75rem;
+    opacity: 0.8;
+    letter-spacing: 0.08em;
+}
+
+
+
+/* This is the row of buttons to go to other rooms! */
+.header nav {
+    display: flex;
+    gap: 30px; /* Give each button some elbow room! */
+    align-items: center;
+}
+
+/* These are our magic map links to find our way around! */
+.header nav a {
+    text-decoration: none; /* No ugly lines under our pretty words! */
+    color: var(--text-primary); /* Use our dark green crayon! */
+    font-weight: 600; /* Make the words a little bit chunky! */
+    font-size: 15px; /* Just the right size for reading! */
+    text-transform: uppercase; /* Use BIG LETTERS for everything! */
+    letter-spacing: 0.5px; /* Give the letters some room to dance! */
+    position: relative; /* This helps us draw a little line under them later! */
+    padding: 5px 0; /* Give the words some space! */
+    transition: color 0.3s; /* Make the color change smoothly! */
+}
+
+/* This is a secret line that appears when we want to click a link! */
+.header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--text-secondary); /* A pretty green line! */
+    transition: width 0.3s ease; /* Make the line grow like a flower! */
+}
+
+/* When our finger or mouse touches a link, it turns a pretty green! */
+.header nav a:hover {
+    color: var(--text-secondary);
+}
+
+/* And the secret line grows all the way across! */
+.header nav a:hover::after {
+    width: 100%;
+}
+
+/* These are the buttons to change the words to a different language! */
+.lang-tabs {
+    display: flex; /* Put them side-by-side! */
+    background: rgba(0, 0, 0, 0.05); /* A tiny bit of grey for the box! */
+    padding: 4px; /* Room for the buttons! */
+    border-radius: 30px; /* Make the corners super round! */
+    gap: 2px; /* A tiny space between buttons! */
+}
+
+/* These are the little buttons inside the language box! */
+.lang-tab {
+    background: transparent; /* No color until we click it! */
+    border: none; /* No lines around it! */
+    padding: 6px 15px; /* Just enough room for a finger! */
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer; /* This tells us we can click it! */
+    border-radius: 20px; /* Round corners! */
+    transition: all 0.3s ease; /* Smooth changes! */
+}
+
+/* When a button is the "Boss" (active), it turns dark green with white words! */
+.lang-tab.active {
+    background: var(--text-primary);
+    color: var(--bg-secondary);
+    box-shadow: 0 2px 8px var(--shadow); /* Give it a tiny shadow! */
+}
+
+
+
+/* This is our special shopping bag link! It's our favorite! */
+.cart-link {
+    background: var(--text-secondary); /* A bright green bag! */
+    color: white !important; /* White words inside! */
+    padding: 8px 18px !important; /* Plenty of room for stuff! */
+    border-radius: 25px; /* Round like a ball! */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between the bag icon and words! */
+    transition: all 0.3s ease !important;
+}
+
+/* When we touch our bag, it turns into a darker green and jumps up a little! */
+.cart-link:hover {
+    background: #1b4332 !important;
+    transform: translateY(-2px); /* Wee! Jump! */
+    box-shadow: 0 5px 15px rgba(27, 67, 50, 0.3); /* A bigger shadow when it jumps! */
+}
+
+/* We don't need a secret line for the bag, it's already special! */
+.cart-link::after {
+    display: none !important;
+}
+
+/* This is the giant picture slide at the top! It shows many big pictures! */
+.hero-carousel {
+    position: relative; /* This holds all the slides inside! */
+    width: 100%; /* Spread all the way across! */
+    height: 80vh; /* It's very tall, like a big movie screen! */
+    min-height: 500px; /* But not too small! */
+    overflow: hidden; /* Hide the pictures that are waiting in line! */
+    background-color: #f0fdf4; /* A soft green color for the floor! */
+}
+
+/* This is one single big picture in our slide! */
+.hero-slide {
+    position: absolute; /* Stick it inside the carousel box! */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Make it invisible until it's its turn! */
+    transition: opacity 2s ease-in-out; /* Fade in like a ghost! */
+    z-index: 1; /* Stay behind the active picture! */
+}
+
+/* When a picture is the "Star" (active), we make it visible! */
+.hero-slide.active {
+    opacity: 1;
+    z-index: 2; /* Move to the front! */
+}
+
+/* This is the actual image for our slide! */
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Make sure the picture fills the whole screen! */
+    transform: scale(1);
+    transition: transform 10s linear; /* Very slow zooming effect! */
+}
+
+/* When the picture is showing, it slowly gets bigger, like it's coming closer! */
+.hero-slide.active img {
+    transform: scale(1.1);
+}
+
+.advertisment {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 10s linear;
+    /* Slow zoom duration */
+}
+
+/* This is the part of the page where you find help when you feel icky! */
+.remedy-section {
+    padding: 60px 20px 35px; /* Tighten spacing above/below to reduce gap */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* This is the big box that holds our search tool! */
+.remedy-container {
+    width: 100%;
+    max-width: 700px; /* Don't let the box get too wide! */
+    padding: 50px;
+    text-align: center;
+    border-radius: 30px; /* Soft round corners! */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* This makes the box look like it's made of magic shiny glass! */
+.glass-card {
+    background: var(--card-bg); /* White background! */
+    backdrop-filter: blur(15px); /* Makes things behind it look blurry! */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2); /* A tiny shiny border! */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2); /* A soft blue shadow! */
+}
+
+/* The big title for finding remedies! */
+.remedy-section h2 {
+    font-size: 2.5rem; /* Big letters! */
+    color: var(--text-primary); /* Dark green! */
+    margin-bottom: 10px;
+    font-weight: 800; /* Extra chunky letters! */
+}
+
+/* The smaller message under the title! */
+.remedy-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary); /* A lighter green! */
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* This is the box where you type your symptom! */
+.search-box {
+    display: flex; /* Put the typing space and button together! */
+    gap: 15px;
+    background: var(--input-bg); /* Light color for typing! */
+    padding: 8px;
+    border-radius: 50px; /* Super round like a pill! */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 2px 4px var(--shadow); /* A shadow that goes *inside* the box! */
+}
+
+/* This is the actual space where your letters go! */
+.search-box input {
+    flex: 1; /* Take up as much room as possible! */
+    border: none; /* No lines around the words! */
+    background: transparent; /* See-through background! */
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    outline: none; /* No ugly orange line when clicking! */
+    color: var(--text-primary);
+}
+
+/* This is the "Find Help" button! */
+.search-btn {
+    background: linear-gradient(135deg, var(--text-secondary), var(--text-primary)); /* A green rainbow background! */
+    color: white; /* White words! */
+    border: none;
+    padding: 12px 35px;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(27, 67, 50, 0.3); /* A pretty green shadow! */
+}
+
+/* When you touch the button, it pops up a little! */
+.search-btn:hover {
+    transform: translateY(-2px); /* Jump! */
+    box-shadow: 0 6px 20px rgba(27, 67, 50, 0.4); /* Bigger shadow! */
+}
+
+/* This is the secret place where the answer appears! */
+.result-container {
+    margin-top: 30px;
+    min-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#remedyResult {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    line-height: 1.6;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: none;
+    /* Initially hidden */
+    animation: slideUp 0.5s ease forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.remedy-section {
+    padding: 80px 20px;
+    background: var(--bg-primary);
+}
+
+.remedy-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.remedy-container h2 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.remedy-subtitle {
+    font-size: 1.2rem;
+    color: #4a7c59;
+    margin-bottom: 40px;
+}
+
+.search-box {
+    display: flex;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+#symptomInput {
+    flex: 1;
+    padding: 18px 25px;
+    font-size: 1.1rem;
+    border: 2px solid var(--text-secondary);
+    border-radius: 50px;
+    outline: none;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+#symptomInput:focus {
+    border-color: #1b4332;
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+}
+
+.search-btn {
+    padding: 18px 35px;
+    background: linear-gradient(135deg, #2d6a4f, #1b4332);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    animation: pulseGradient 3s infinite ease-in-out;
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(45, 106, 79, 0.3);
+    animation: none;
+    /* Pause animation on hover */
+}
+
+.result-box {
+    max-width: 700px;
+    margin: 20px auto 10px;
+    padding: 25px;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+#resultText {
+    margin: 0;
+    font-size: 1.3rem;
+    line-height: 1.7;
+}
+
+/* Main Footer Styles */
+/* This is the "Bottom Plate" of our house! It holds the copyright and links. */
+.main-footer {
+    background: var(--footer-bg);
+    color: #fff;
+    padding: 40px 0 16px;
+    margin-top: 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* These are the different columns in the "Bottom Plate"! */
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 30px;
+}
+
+/* The big titles at the bottom, like "About Us"! */
+.footer-section h3 {
+    color: #ffd0d0;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.footer-section p,
+.footer-section ul {
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ffd0d0;
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 30px;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #ffeaea;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Contact Us Section Styles (Premium Centered) */
+.contact-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, rgba(168, 230, 207, 0.3) 0%, rgba(220, 237, 193, 0.3) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+}
+
+.contact-container {
+    width: 100%;
+    max-width: 620px;
+    background: #ffffff;
+    border-radius: 26px;
+    padding: 36px 32px;
+    border: 1px solid rgba(45, 106, 79, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, #2d6a4f, #95d5b2);
+}
+
+.contact-header h2 {
+    font-size: 2.2rem;
+    font-family: 'Playfair Display', serif;
+    color: #1b4332;
+    margin-bottom: 15px;
+    font-weight: 900;
+}
+
+.contact-header p {
+    color: #4a7c59;
+    margin-bottom: 24px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* This puts our name and email boxes side-by-side! */
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+/* The little sign over each typing box! */
+.form-group label {
+    font-weight: 700;
+    color: #2d6a4f;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 16px 20px;
+    border: 2px solid #f1f5f3;
+    border-radius: 12px;
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #f8faf9;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #2d6a4f;
+    background: #ffffff;
+    box-shadow: 0 5px 15px rgba(45, 106, 79, 0.05);
+}
+
+/* This is the big button to send your letter! It's very happy! */
+.submit-contact-btn {
+    background: #1b4332;
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-top: 15px;
+    align-self: center;
+    width: fit-content;
+    min-width: 250px;
+    animation: pulseSolid 3s infinite ease-in-out;
+}
+
+.submit-contact-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(27, 67, 50, 0.25);
+    background: #2d6a4f;
+    animation: none;
+    /* Pause animation on hover */
+}
+
+@keyframes pulseGradient {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(27, 67, 50, 0.3);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px rgba(45, 106, 79, 0.6);
+        filter: hue-rotate(15deg);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(27, 67, 50, 0.3);
+    }
+}
+
+@keyframes pulseSolid {
+    0% {
+        transform: scale(1);
+        background: #1b4332;
+    }
+
+    50% {
+        transform: scale(1.05);
+        background: #40916c;
+    }
+
+    100% {
+        transform: scale(1);
+        background: #1b4332;
+    }
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #c3e6cb;
+    font-weight: 500;
+}
+
+/* Modern Dosha Toast/Popup */
+/* This is the "Surprise Toast" (Popup) that tells you about your team! */
+.dosha-toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 350px;
+    background: rgba(255, 255, 255, 0.08);
+    /* Crystal transparency */
+    backdrop-filter: blur(12px) contrast(1.1) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) contrast(1.1) saturate(150%);
+    border-radius: 20px;
+    z-index: 9999;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    /* Reflective edge */
+    overflow: hidden;
+    animation: slideInRight 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-family: 'Poppins', sans-serif;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+}
+
+.toast-header-custom {
+    background: rgba(27, 67, 50, 0.4);
+    /* Glass header */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toast-header-custom .title {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.close-toast {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.toast-body {
+    padding: 20px;
+    text-align: left;
+}
+
+.toast-body p {
+    margin: 0 0 10px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.advice-text {
+    font-style: italic;
+    color: #2d6a4f;
+    font-size: 0.85rem;
+}
+
+.mini-products-grid {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.btn-more {
+    display: block;
+    text-align: center;
+    background: #f0fdf4;
+    color: #1b4332;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: background 0.3s;
+}
+
+.btn-more:hover {
+    background: #dcfce7;
+}
+
+/* Fix for footer media query from previous edit */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* Payment Modal Styles */
+.payment-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    /* Higher than header */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.payment-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.payment-modal {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.payment-modal-overlay.active .payment-modal {
+    transform: translateY(0);
+}
+
+.modal-header {
+    background: #1b4332;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.close-modal {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.plan-info,
+.price-info {
+    margin: 5px 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.payment-options {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.payment-option {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.payment-option:hover {
+    background: #f9f9f9;
+    border-color: #aaa;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.payment-option .icon {
+    font-size: 2rem;
+}
+
+.payment-option.esewa:hover {
+    background: #e6fcf5;
+    /* Light green tint */
+    border-color: #62d2a2;
+}
+
+.payment-option.bank:hover {
+    background: #f0f4f8;
+    /* Light blue/grey tint */
+    border-color: #3b5998;
+}
+
+.payment-option .details h4 {
+    margin: 0 0 5px;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.payment-option .details p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.btn-select-plan {
+    display: inline-block;
+    background: var(--text-primary);
+    color: var(--bg-secondary);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.btn-select-plan:hover {
+    background: #2d6a4f;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(27, 67, 50, 0.3);
+}
+
+
+
+:root {
+    --glass-bg: var(--card-bg);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: var(--shadow);
+    --primary-color: var(--text-secondary);
+    --text-color: var(--text-primary);
+    --btn-bg: var(--input-bg);
+    --btn-hover: var(--navbar-bg);
+    --correct-color: #2a9d8f;
+    --wrong-color: #e63946;
+}
+
+/* Scoped wrapper for the quiz section */
+#quiz-wrapper {
+    font-family: 'Poppins', sans-serif;
+    min-height: 80vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(135deg, rgba(168, 230, 207, 0.7), rgba(220, 237, 193, 0.7)),
+        url('quiz_bg.png') no-repeat center center/cover;
+
+    background-attachment: fixed;
+    position: relative;
+    padding: 60px 20px;
+}
+
+
+/* Quiz Card Container - Glassmorphism */
+.quiz-container {
+    width: 100%;
+    max-width: 800px;
+    min-height: 500px;
+    border-radius: 20px;
+
+    /* Glass Effect */
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 1s ease-out;
+    padding: 40px;
+    color: var(--text-color);
+}
+
+/* Header Section */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 15px;
+}
+
+.quiz-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--text-color);
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.quiz-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+
+}
+
+/* Question Section */
+.question-box {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.question-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px var(--shadow);
+}
+
+/* Options Grid */
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.option-btn {
+    background: var(--btn-bg);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 18px 25px;
+    border-radius: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.option-btn:hover {
+    background: var(--btn-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Classes for JS Interaction */
+.option-btn.correct {
+    background: var(--correct-color) !important;
+    color: #fff !important;
+    border-color: var(--correct-color) !important;
+    animation: pulseSuccess 0.5s;
+}
+
+.option-btn.wrong {
+    background: var(--wrong-color) !important;
+    color: #fff !important;
+    border-color: var(--wrong-color) !important;
+    animation: shakeError 0.4s;
+}
+
+.option-btn.disabled {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Score/Result Screen */
+.result-box {
+    text-align: center;
+    display: none;
+    padding-top: 20px;
+}
+
+.result-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.result-box p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.restart-btn {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.restart-btn:hover {
+
+    transform: scale(1.05);
+    background: #1b4332;
+}
+
+/* Animations */
+@keyframes pulseSuccess {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes shakeError {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Helper for JS fade transitions */
+.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.4s ease;
+}
+
+.fade-in {
+    animation: fadeInScale 0.4s ease forwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quiz-title {
+        font-size: 1.8rem;
+    }
+
+    #quiz-wrapper {
+        padding: 40px 10px;
+    }
+
+    .quiz-container {
+        padding: 25px;
+    }
+}
+
+/* Beautiful Gradient Popup / Modal */
+.quiz-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.4s ease;
+}
+
+.quiz-modal {
+    background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    color: white;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    animation: modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.quiz-modal .icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.quiz-modal h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #ffd700, #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.quiz-modal p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.quiz-modal .points {
+    display: inline-block;
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.quiz-modal-btn {
+    background: #ffd700;
+    color: #1b4332;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.quiz-modal-btn:hover {
+    background: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Floating Points Toast */
+@keyframes floatUp {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    20% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    80% {
+        transform: translateY(-20px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+}
+
+/* Subscription Section Variables */
+:root {
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --card-border: rgba(255, 255, 255, 0.2);
+    --primary-gradient: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%);
+    --gold-gradient: linear-gradient(135deg, #ffd700 0%, #f39c12 100%);
+    --text-dark: #1b4332;
+    --text-light: #f8faf9;
+}
+
+/* Section Layout */
+.subscription-section {
+    padding: 80px 20px;
+    text-align: center;
+    background: url('subscription_bg_pattern.png'), linear-gradient(180deg, #f0fdf4 0%, #dcfce7 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.subscription-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    font-weight: 900;
+}
+
+.subscription-header p {
+    color: #4a7c59;
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+}
+
+/* Card Slider / Grid Container */
+.subscription-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 20px;
+    scroll-behavior: smooth;
+}
+
+/* Mobile Slider override */
+@media (max-width: 900px) {
+    .subscription-container {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 40px;
+        /* Space for scrollbar */
+        scroll-snap-type: x mandatory;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .pricing-card {
+        scroll-snap-align: center;
+        min-width: 280px;
+    }
+}
+
+/* Premium Card Design */
+.pricing-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 30px;
+    padding: 40px 30px;
+    width: 320px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 15px 35px var(--shadow);
+    color: var(--text-primary);
+
+    /* Animation Request */
+    opacity: 0;
+    animation: fadeSlide 0.8s ease forwards;
+}
+
+/* Staggered Animation Delays */
+.pricing-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.pricing-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.pricing-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.pricing-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 30px 60px rgba(45, 106, 79, 0.25);
+    z-index: 10;
+}
+
+/* Featured Card (Middle) */
+.pricing-card.featured {
+    border: 2px solid #ffd700;
+    transform: scale(1.05);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9));
+    z-index: 5;
+}
+
+.pricing-card.featured:hover {
+    transform: translateY(-15px) scale(1.08);
+}
+
+.badge-best-value {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold-gradient);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Card Content */
+.pricing-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #2d6a4f;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.price span {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.price .duration {
+    font-size: 1rem;
+    color: #6c757d;
+    align-self: flex-end;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 30px 0;
+}
+
+.features-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.features-list li:last-child {
+    border-bottom: none;
+}
+
+.features-list li .check {
+    color: #2d6a4f;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.features-list li.disabled {
+    color: #adb5bd;
+    text-decoration: line-through;
+}
+
+/* CTA Button inside Card */
+.btn-select-plan {
+    display: inline-block;
+    width: 80%;
+    padding: 15px 0;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s;
+    border: 2px solid #2d6a4f;
+    color: #2d6a4f;
+    background: transparent;
+}
+
+.btn-select-plan:hover {
+    background: var(--primary-gradient);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 10px 20px rgba(45, 106, 79, 0.3);
+}
+
+.pricing-card.featured .btn-select-plan {
+    background: var(--primary-gradient);
+    color: #fff;
+    border: none;
+    animation: pulseSolid 2.5s infinite ease-in-out;
+}
+
+.pricing-card.featured .btn-select-plan:hover {
+    animation: none;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(45, 106, 79, 0.4);
+}
+
+/* Requested Keyframes */
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Payment Method Buttons */
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-payment-method {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.btn-payment-method img {
+    height: 30px;
+}
+
+.btn-payment-method:hover {
+    border-color: #2d6a4f;
+    background: #f0fdf4;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(45, 106, 79, 0.1);
+}
+
+.btn-payment-method.esewa {
+    border-color: #60bb46;
+}
+
+.btn-payment-method.esewa:hover {
+    background: #f1f8ee;
+}

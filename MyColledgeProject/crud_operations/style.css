@@ -1,0 +1,237 @@
+/* These are the playground rules for our secret room! */
+body {
+    font-family: 'Poppins', sans-serif; /* Pretty writing style! */
+    background: #f8fbf9; /* Soft greenish floor! */
+    min-height: 100vh; /* As tall as the whole screen! */
+    display: flex; /* Line up the toys! */
+    flex-direction: column; /* Stack them up! */
+}
+
+/* This is the big white box that holds all our toy lists! */
+.container {
+    flex: 1 0 auto;
+    background-color: white; /* Clean white paper! */
+    padding: 2.5rem; /* Room for the words to play! */
+    border-radius: 15px; /* Soft round corners! */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Floating a little! */
+    border: 1px solid #edf2f7; /* Tiny line around it! */
+    margin-bottom: 3rem; /* Room at the bottom! */
+}
+
+/* Global footer container override to prevent white box inheritance */
+body footer .container,
+html body footer .container,
+footer.pt-5 .container {
+    background-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* This is the big blue sign at the very top! */
+#main-title {
+    background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%); /* Deep blue sky color! */
+    color: white; /* Bright white letters! */
+    text-align: center; /* Put words in the middle! */
+    padding: 1.5rem; /* Big thick sign! */
+    margin-bottom: 2rem; /* Space below! */
+    letter-spacing: 2px; /* Pull the letters apart! */
+    font-weight: 700; /* Extra thick letters! */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Floating sign! */
+    text-transform: uppercase; /* BIG CAPITAL LETTERS! */
+}
+
+/* Container Spacing */
+.container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    border: 1px solid #e1e8ed;
+    margin-bottom: 3rem;
+}
+
+/* Headings */
+h2 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #3498db;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+/* This makes our toy list table look neat and tidy! */
+.table {
+    border-radius: 8px; /* Round corners! */
+    overflow: hidden; /* Keep the rows inside! */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); /* Soft shadow! */
+}
+
+.table thead {
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%); /* Blue roof for the table! */
+    color: white; /* White labels! */
+}
+
+.table th {
+    border: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    padding: 1rem;
+}
+
+.table td {
+    vertical-align: middle;
+    padding: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f2f6;
+    transition: background-color 0.3s ease;
+}
+
+/* These are the shiny bubble buttons we can click! */
+.btn {
+    border-radius: 25px; /* Round like a bubble! */
+    padding: 8px 20px; /* Big enough for fingers! */
+    font-weight: 500; /* Medium thick! */
+    transition: all 0.3s ease; /* Change color slowly! */
+    border: none; /* No ugly lines! */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Floating a little! */
+}
+
+.btn:hover {
+    transform: translateY(-2px); /* Lift up when touched! */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow gets bigger! */
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #36d1dc, #5b86e5);
+}
+
+.btn-success {
+    background: linear-gradient(to right, #11998e, #38ef7d);
+}
+
+.btn-danger {
+    background: linear-gradient(to right, #eb3349, #f45c43);
+}
+
+/* Modal Styling */
+.modal-content {
+    border-radius: 15px;
+    border: none;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: linear-gradient(to right, #4b6cb7, #182848);
+    color: white;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.btn-close {
+    filter: invert(1);
+}
+
+/* Utility & Responsiveness */
+.box1 {
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.box1 h2 {
+    margin-bottom: 0;
+    border: none;
+}
+
+/* Footer Styling */
+footer {
+    flex-shrink: 0;
+    background: #1b4332 !important;
+    color: #ffffff;
+    padding: 60px 0 30px !important;
+    margin-top: auto;
+    /* Push to bottom */
+    border-top: 4px solid #2d6a4f;
+}
+
+footer h5 {
+    color: #ffd0d0 !important;
+    /* Soft gold/peach for headers */
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+footer p {
+    color: #e2e8f0 !important;
+    font-size: 0.95rem;
+}
+
+footer a {
+    color: #a0aec0 !important;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+footer a:hover {
+    color: #ffffff !important;
+    padding-left: 5px;
+}
+
+footer .text-warning {
+    color: #ffd0d0 !important;
+}
+
+/* Media Queries */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 1.5rem;
+        max-width: 95%;
+    }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+    #main-title {
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+
+    .box1 {
+        flex-direction: column;
+        align-items: stretch !important;
+        text-align: center;
+    }
+
+    .box1 button {
+        width: 100%;
+    }
+
+    .table thead {
+        display: none;
+        /* Make table stack on mobile if needed, or keep scroll */
+    }
+
+    /* Option 2: Scrollable table (Preferred for data tables) */
+    .table-responsive-wrapper {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
